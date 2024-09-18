@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Add Expense";
+}
+
+@model ExpenseTracker.Models.Expense
+
+<div class="text-center">
+    <h1 class="display-4">Add an Expense</h1>
+</div>
+
+<form asp-action="AddExpense">
+    <div class="form-group">
+        <input hidden asp-for="Id" class="form-control" type="number" placeholder="0" />
+    </div>
+
+    <div class="form-group mt-4">
+        <label class="control-label">Description</label>
+        <input asp-for="Description" class="form-control" type="text" placeholder="Describe your expense" />
+    </div>
+
+    <div class="form-group mt-4">
+        <label class="control-label">Value ₱</label>
+        <input asp-for="Value" class="form-control" type="number" placeholder="0.00" step="0.01" />
+    </div>
+
+    <div class="form-group mt-4">
+        <button type="submit" class="btn btn-primary">Add expense</button>
+    </div>
+</form>

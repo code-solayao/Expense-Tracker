@@ -1,0 +1,63 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Expenses";
+}
+
+@model List<Expense>
+
+<div class="text-center">
+    <h1 class="display-4">Expense Tracker</h1>
+    <a asp-action="Add" class="btn btn-primary">Add an expense</a>
+</div>
+
+<div>
+    <hr />
+    <h4>Total: ₱@ViewBag.Expenses</h4>
+    <br />
+</div>
+
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Description
+                </th>
+                <th>
+                    Value
+                </th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @{
+                foreach (Expense expense in Model)
+                {
+                    <tr>
+                        <td>
+                            @expense.Id
+                        </td>
+                        <td>
+                            @expense.Description
+                        </td>
+                        <td>
+                            ₱@expense.Value
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@expense.Id">Edit</a>
+                            <a asp-action="Delete" asp-route-id="@expense.Id">Delete</a>
+                        </td>
+                    </tr>
+                }
+            }
+        </tbody>
+    </table>
+</div>
